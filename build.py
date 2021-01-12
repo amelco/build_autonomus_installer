@@ -34,7 +34,9 @@ def build_front():
     cprint("\n ## Baixando dependencias de " + FRONTEND_DIR + "\n")
     system("npm install")
     cprint("\n ## Compilando " + FRONTEND_DIR + "\n")
+    system("npm run build")
     system("npm run electron-build")
+    #  system("npm run electron-pack")
     chdir("..")
 
 def build_keyboard():
@@ -54,6 +56,7 @@ def build_keyboard():
             system("copy /y " + CV2_DIR + OPENCV_FILE + ".")
     cprint("\n ## Compilando backend e modelo da piscada \n")
     system('pyinstaller --hidden-import=pyttsx3 -p venv\\lib\\site-packages --add-data src\\words_filtered.txt;. --add-data src\\big_text.txt;. --add-data src\\autocomplete\\models_compressed.pkl;autocomplete\\ --add-data "' + OPENCV_FILE + ';." --hidden-import=pyttsx3.drivers.sapi5 --hidden-import=pywin32 --hidden-import=pywin32-ctypes --hidden-import=pkg_resources.py2_warn src\\build.py')
+    chdir("..")
 
 def make_zip():
     pass
@@ -66,4 +69,4 @@ repo_exists(FRONTEND_DIR, FRONTEND_GIT)
 repo_exists(KEYBOARD_DIR, KEYBOARD_GIT)
 build_front()
 #  build_keyboard()
-make_zip()
+#  make_zip()
