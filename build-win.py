@@ -49,7 +49,7 @@ def build_keyboard():
     cprint("\n ## Baixando dependencias de " + KEYBOARD_DIR + "\n")
     system("pip install pyinstaller")
     system(VENV_DIR + "pip install -r requirements.txt")
-    cprint("\n ## Verificando versão do OpenCV e adicionando DLL ao instalador \n")
+    cprint("\n ## Verificando versao do OpenCV e adicionando DLL ao instalador \n")
     for file in listdir(CV2_DIR):
         if file.endswith(".dll"):
             OPENCV_FILE = file
