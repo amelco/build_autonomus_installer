@@ -55,7 +55,7 @@ def build_keyboard():
             OPENCV_FILE = file
             os.system("copy /y " + CV2_DIR + OPENCV_FILE + ".")
     cprint("\n ## Compilando backend e modelo da piscada \n")
-    os.system('pyinstaller --hidden-import=pyttsx3 -p venv\\lib\\site-packages --add-data src\\words_filtered.txt;. --add-data src\\big_text.txt;. --add-data src\\autocomplete\\models_compressed.pkl;autocomplete\\ --add-data "' + OPENCV_FILE + ';." --hidden-import=pyttsx3.drivers.sapi5 --hidden-import=pywin32 --hidden-import=pywin32-ctypes --hidden-import=pkg_resources.py2_warn src\\build.py')
+    os.system('pyinstaller --hidden-import=pyttsx3 -p venv\\lib\\site-packages --add-data src\\words_filtered.txt;. --add-data src\\big_text.txt;. --add-data src\\autocomplete\\models_compressed.pkl;autocomplete\\ --add-data "' + OPENCV_FILE + ';." --hidden-import=pyttsx3.drivers.sapi5 --hidden-import=pywin32 --hidden-import=pywin32-ctypes --hidden-import=pkg_resources.py2_warn --noconfirm src\\build.py')
     os.chdir("..")
 
 def build_installer():
