@@ -60,7 +60,7 @@ def build_keyboard():
 
 def build_installer():
     cprint("\n ## Construindo o instalador.\n")
-    bat = os.open("tmp.bat", os.O_WRONLY)
+    bat = os.open("tmp.bat", os.O_WRONLY | os.O_CREAT)
     command = str.encode('"%programfiles(x86)%\\NSIS\makensis.exe" /V4 make_installer.nsi')
     os.write(bat, command)
     os.close(bat)
