@@ -16,13 +16,13 @@ def cprint(msg):
     WHITE = "\033[0m"
     print(YELLOW + msg + WHITE)
 
-def repo_exists(repo_dir, repo_git):
+def repo_exists(repo_dir, repo_git, branch="master"):
     exists = os.path.exists(repo_dir + "/.git")
     if exists:
         cprint("\n ## Atualizando repositorio " + repo_dir + ".\n")
         subprocess.call('', shell=True)
         os.chdir(repo_dir)
-        os.system("git checkout dev")
+        os.system("git checkout " + branch)
         os.system("git pull")
         os.chdir("..")
     else:
@@ -75,8 +75,8 @@ if len(sys.argv) == 2:
     BASE_DIR = sys.argv[1]
 
 os.chdir(BASE_DIR)
-repo_exists(FRONTEND_DIR, FRONTEND_GIT)
-repo_exists(KEYBOARD_DIR, KEYBOARD_GIT)
+repo_exists(FRONTEND_DIR, FRONTEND_GIT, "master")
+repo_exists(KEYBOARD_DIR, KEYBOARD_GIT, "dev")
 build_front()
 build_keyboard()
 build_installer()
