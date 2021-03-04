@@ -1,4 +1,5 @@
-autonomus-app
-back-end-teclado-interativo
+/autonomus-app
+/back-end-teclado-interativo
+/needed_files/autonomus-socket/node_modules
 venv
 build-win.zip
