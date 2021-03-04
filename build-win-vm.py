@@ -16,7 +16,7 @@ def cprint(msg):
     WHITE = "\033[0m"
     print(YELLOW + msg + WHITE)
 
-def repo_exists(repo_dir, repo_git, branch="master"):
+def repo_exists(repo_dir, repo_git, branch="dev" ):
     exists = os.path.exists(repo_dir + "/.git")
     if exists:
         cprint("\n ## Atualizando repositorio " + repo_dir + ".\n")
@@ -49,15 +49,13 @@ def build_keyboard():
     cprint("\n ## Baixando dependencias de " + KEYBOARD_DIR + "\n")
     os.system("pip install pyinstaller")
     os.system(VENV_DIR + "pip install -r requirements.txt")
-    cprint("\n ## Copiando modelos\n")
-    os.system("copy /y ..\\back-end-teclado-interativo\\modelFiles\\* ..\\needed_files\\build\\modelFiles\\.")
     cprint("\n ## Verificando versao do OpenCV e adicionando DLL ao instalador \n")
     for file in os.listdir(CV2_DIR):
         if file.endswith(".dll"):
             OPENCV_FILE = file
             os.system("copy /y " + CV2_DIR + OPENCV_FILE + ".")
     cprint("\n ## Compilando backend e modelo da piscada \n")
-    os.system('pyinstaller --hidden-import=pyttsx3 -p venv\\lib\\site-packages --add-data src\\words_filtered.txt;. --add-data src\\big_text.txt;. --add-data src\\autocomplete\\models_compressed.pkl;autocomplete\\ --add-data "' + OPENCV_FILE + ';." --hidden-import=pyttsx3.drivers.sapi5 --hidden-import=pywin32 --hidden-import=pywin32-ctypes --hidden-import=pkg_resources.py2_warn --noconfirm src\\build.py')
+    os.system('pyinstaller --hidden-import=pyttsx3 -p venv\\lib\\site-packages --add-data src\\words_filtered.txt;. --add-data src\\big_text.txt;. --add-data src\\autocomplete\\models_compressed.pkl;autocomplete\\ --add-data "' + OPENCV_FILE + ';." --hidden-import=pyttsx3.drivers.sapi5 --hidden-import=pywin32 --hidden-import=pywin32-ctypes --hidden-import=pkg_resources.py2_warn src\\build.py --noconfirm')
     os.chdir("..")
 
 def build_installer():
