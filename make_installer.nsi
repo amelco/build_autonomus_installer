@@ -9,7 +9,7 @@
 # All the other settings can be tweaked by editing the !defines at the top of this script
 !define APPNAME "Autonomus"
 !define COMPANYNAME "LAIS"
-!define DESCRIPTION "A short description goes here"
+!define DESCRIPTION ""
 # These three must be integers
 !define VERSIONMAJOR 1
 !define VERSIONMINOR 1
@@ -120,12 +120,12 @@ section "uninstall"
 	# Remove files
 	delete $INSTDIR\autonomusapp.exe
 	delete $INSTDIR\logo.ico
- 
+
 	# Always delete uninstaller as the last action
 	delete $INSTDIR\uninstall.exe
  
+	rmDir /r $INSTDIR
 	# Try to remove the install directory - this will only happen if it is empty
-	rmDir $INSTDIR
 	delete $INSTDIR
  
 	# Remove uninstaller information from the registry
