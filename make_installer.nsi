@@ -77,6 +77,7 @@ section "install"
 	# Start Menu
 	createDirectory "$SMPROGRAMS\${COMPANYNAME}"
 	createShortCut "$SMPROGRAMS\${COMPANYNAME}\${APPNAME}.lnk" "$INSTDIR\Autonomus.bat" "" "$INSTDIR\logo.ico"
+	createShortCut "$$DESKTOP\${APPNAME}.lnk" "$INSTDIR\Autonomus.bat" "" "$INSTDIR\logo.ico"
  
 	# Registry information for add/remove programs
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "DisplayName" "${COMPANYNAME} - ${APPNAME} - ${DESCRIPTION}"
