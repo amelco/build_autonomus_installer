@@ -73,4 +73,3 @@ Para iniciar o autonomus, o socket e o back-end, basta clicar nesse ícone.
 ## TODO
 
 [ ] Econtrar uma forma de unificar a incialização do autonomus, socket e back-end, em uma única janela.
-[ ] Implementar a desinstalação completa do autonomus.
